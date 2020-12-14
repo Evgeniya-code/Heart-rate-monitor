@@ -64,5 +64,26 @@
 		}
 
 	}
+	.consultation{
+		min-height: 550px;
+		&__title{
+			font-size: 28px;
+			text-align: center;
+		}
+		&__descr{
+			text-align: center;
+		}
+		form.feed-form {
+			display: flex;
+			align-items: center;
+			margin: 0 auto;
+			margin-top: 50px;
+			button {
+				margin-top: 30px;
+			}
+		}
+		
+		
+	}
 	
 }	
