@@ -63,7 +63,7 @@ $(document).ready(function(){
                 phone: "required",
                 email: {
                     required: true,
-                    email: true
+                    email: true,
                 }
             },
             messages: {
@@ -71,7 +71,7 @@ $(document).ready(function(){
                 phone: "Мы не будем вам звонить",
                 email: {
                   required: "Мне все равно на ваш имэйл",
-                  email: "Займитесь нормальным делом"
+                  email: "Займитесь нормальным делом",
                 }
             }
             
@@ -83,4 +83,37 @@ $(document).ready(function(){
     validateForms('#order form');
 
     $('input[name=phone]').mask("+7 (999) 999-99-99");
+
+    $('form').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function() {
+            $(this).find("input").val("");
+            $('#consultation, #order').fadeOut();
+            $('.overlay, #thanks').fadeIn('slow');
+
+            $('form').trigger('reset');
+        });
+        return false;
+    });
+        // Smooth scroll and page up
+
+    $(window).scroll(function(){
+        if ($(this).scrollTop() > 1600) {
+            $('.pageUp').fadeIn();
+        } else {
+            $('.pageUp').fadeOut();
+        }
+    }); 
+    $("a[href^='#']").click(function(){
+        const _href = $(this).attr("href");
+        $("html, body").animate({scrollTop: $(_href).offset().top+"px"});
+        return false;
+    });   
+    
+    new WOW().init();
+    
 });

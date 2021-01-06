@@ -1,6 +1,7 @@
 
    @import 'mixins';
    @import 'variables';
+   @import 'animations';
   
    
 * { 
@@ -21,6 +22,8 @@
 @import'blocks/reviews';
 @import'blocks/footer';
 @import'blocks/modal';
+@import'blocks/pageUp';
+
 
 @import 'media';
 
